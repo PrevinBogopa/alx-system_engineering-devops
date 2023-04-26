@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Story script based on /etc/passwd file
+
+myfile="/etc/passwd"
+
+# Loop through each line of the file
+while IFS= read -r line
+do
+    # Get relevant fields using cut command
+    f1="$(echo "$line" | cut -d":" -f1)"
+    f2="$(echo "$line" | cut -d":" -f4)"
+    f3="$(echo "$line" | cut -d":" -f6)"
+    f4="$(echo "$line" | cut -d":" -f7)"
+    f5="$(echo "$line" | cut -d":" -f3)"
+    f6="$(echo "$line" | cut -d":" -f2)"
+    f7="$(echo "$line" | cut -d":" -f5)"
+
+    # Display the story using the fields obtained from the file
+    echo "User ${f1} is part of the ${f2} gang, lives in ${f3} and rides ${f4}. Their place is protected by the passcode ${f6}. More info about the user can be found here: ${f7}"
+done < "$myfile"
+
