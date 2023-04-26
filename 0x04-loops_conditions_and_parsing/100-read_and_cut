@@ -5,10 +5,8 @@
 #   Only displays the username, user id, and user home directory path.
 
 # Define the file to be displayed.
-myfile="/etc/passwd"
 
-while IFS= read -r line
-do
-    echo "$line" | cut -d":" -f1,3,6
-done < "$myfile"
 
+while read -r passwd; do
+  echo "$passwd" | cut -d ':' -f1,3,6
+done < "/etc/passwd"
